@@ -1,4 +1,4 @@
-# Quantitaive Discursive Analysis
+# Quantitative Discursive Analysis
 
 (C) 2019 Mark M. Bailey
 
