@@ -28,7 +28,7 @@ text_graph = QDA.discursive_object('This is a string of your text.  For best res
 
 *#Return list of noun phrases.*  
 
-#Reuturns a list of tuples.  
+#Returns a list of tuples.  
 
 text_graph.nouns  
 
