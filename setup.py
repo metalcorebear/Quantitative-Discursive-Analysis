@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="QDA",
-    version="0.0.1",
+    version="0.0.2",
     author="metalcorebear",
     author_email="mark.mbailey@gmail.com",
     description="A tool for quantitatively measuring the discursive similarity between bodies of text.",
@@ -22,7 +22,7 @@ setuptools.setup(
     py_modules=["QDA"],
     package_data={},
     classifiers=[
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],

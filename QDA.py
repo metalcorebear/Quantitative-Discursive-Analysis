@@ -3,11 +3,10 @@
 @author: metalcorebear
 """
 
-#Calculates discursive similarity between bodies of text.
+#Calculates discursive similarity (cosine angle) between bodies of text.
 #Library is built on NetworkX and Textblob.
 
 import networkx as nx
-import math
 from textblob import TextBlob
 import re
 import numpy as np
@@ -15,24 +14,23 @@ import numpy as np
 
 #Calculate resonance between two discursive objects.
 def resonate(G1, G2):
-    res_divisor_1 = sum([a**2 for a in G1.spectrum.values()])
-    res_divisor_2 = sum([a**2 for a in G2.spectrum.values()])
-    res_divisor = math.sqrt(res_divisor_1*res_divisor_2)
-    if res_divisor == 0:
-        resonance = 0.0
-    else:
-        G1_nodes = G1.spectrum.keys()
-        G2_nodes = G2.spectrum.keys()
-        G_intersect = list(set(G1_nodes) & set(G2_nodes))
-        if len(G_intersect) != 0:
-            S1_list = [G1.spectrum[node] for node in G_intersect]
-            S1_array = np.array(S1_list)
-            S2_list = [G2.spectrum[node] for node in G_intersect]
-            S2_array = np.array(S2_list)
-            resonance_raw = np.dot(S1_array, S2_array)
-            resonance = resonance_raw/res_divisor
-        else:
+    G1_nodes = list(G1.spectrum.keys())
+    G2_nodes = list(G2.spectrum.keys())
+    G_intersect = list(set(G1_nodes) & set(G2_nodes))
+    if len(G_intersect) != 0:
+        G1_list = [G1.spectrum[node] for node in G_intersect]
+        G2_list = [G2.spectrum[node] for node in G_intersect]
+        G1_vector = np.array(G1_list)
+        G2_vector = np.array(G2_list)
+        G1_norm = np.linalg.norm(G1_vector)
+        G2_norm = np.linalg.norm(G2_vector)
+        if G1_norm*G2_norm == 0.0:
             resonance = 0.0
+        else:
+            dot_prod = np.dot(G1_vector, G2_vector)
+            resonance = dot_prod/(G1_norm*G2_norm)
+    else:
+        resonance = 0.0
     return resonance
 
 #Resonate list of discursive objects
