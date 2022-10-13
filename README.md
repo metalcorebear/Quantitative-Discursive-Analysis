@@ -8,12 +8,6 @@ Quantitative Discursive Analysis (QDA) will convert bodies of text into mathemat
 ## Updates
 *2022-10-13: Updated resonance function to be more Pythonic.
 
-## Resonance in Series
-When lists of discursive objects are generated, this tool can be used to measure the resonance in series, where resonance between object i and object i+1 is measured throughout the entire series.  This feature can be useful in measuring time series resonance, for example, discursive similarity of aggregated news over time.
-
-## Discursive Communities
-This tool can also be used to generate discursive communities.  When a list of discursive objects are generated, a weighted association matrix and associated graph (with edge weights representing resonance) can be generated, as well as its weighted betweenness centralities (indicating the relative importance of each discursive object within the network).  This feature can be useful for community identification on social media, where disursive similarity is used as a measure of connection (more robust than simply being "friended," "followed," or "liked").
-
 ## More information
 This tool is built on NetworkX and TextBlob.  Please see relevant documentation for additional information on what other calculations can be done on NetworkX graph objects generated using this library.
 
@@ -24,16 +18,16 @@ https://pypi.org/project/QDA/
 
 `import QDA`<br><br>
 
-# Instantiate discursive object.
+### Instantiate discursive object.
 `text_graph = QDA.discursive_object('This is a string of your text.  For best results, this string should be at least as long as a typical news article.')`<br><br>  
 
-# Calculate resonance between two discursive objects.
+### Calculate resonance between two discursive objects.
 `a = QDA.resonate(text_graph_1, text_graph_2)` (noun phrase tuples : list)
 
-# Calculate resonance of discursive objects in series.
+### Calculate resonance of discursive objects in series.
 `resonance_series = QDA.resonate_as_series(G_list)` (resonance values : dict)
 
-# Calculate resonance between all members of a list.
+### Calculate resonance between all members of a list.
 `d_community = QDA.discursive_community(G_list)`<br>
 `d_community.A` (Resonance adjacency matrix : ndarray)<br>
 `d_community.G` (Graph objhect built from adjacency matrix : NetworkX object)
