@@ -16,10 +16,10 @@ https://pypi.org/project/QDA/
 
 ## Sample Usage
 
-`import QDA`<br><br>
+`import QDA`
 
 ### Instantiate discursive object.
-`text_graph = QDA.discursive_object('This is a string of your text.  For best results, this string should be at least as long as a typical news article.')`<br><br>  
+`text_graph = QDA.discursive_object('This is a string of your text.  For best results, this string should be at least as long as a typical news article.')`
 
 ### Calculate resonance between two discursive objects.
 `a = QDA.resonate(text_graph_1, text_graph_2)` (noun phrase tuples : list)
